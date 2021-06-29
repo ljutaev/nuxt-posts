@@ -26,6 +26,14 @@ export const actions = {
 				return posts
 			})
 	},
+	fetchPostById({commit}, postId) {
+    return this.$axios.$get('/api/posts')
+      .then((posts) => {
+        const selectedPost = posts.find((p) => p._id === postId)
+        commit('setPost', selectedPost)
+        return selectedPost
+      })
+  },
 }
 
 // Mutations are simple functions that have access to a state.
@@ -34,4 +42,7 @@ export const mutations = {
 	setPosts(state, posts) {
 		state.items = posts
 	},
+	setPost(state, post) {
+    state.item = post
+  },
 }

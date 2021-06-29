@@ -31,18 +31,18 @@
 <script>
 export default {
   computed: {
-    // post() {
-    //   return this.$store.state.post.item
-    // },
-    // compiledMarkdown() {
-    //   if (process.client) {
-    //     return marked(this.post.content, {sanitize: true})
-    //   }
-    //   return ''
-    // }
+    post() {
+      return this.$store.state.post.item
+    },
+    compiledMarkdown() {
+      if (process.client) {
+        return marked(this.post.content, {sanitize: true})
+      }
+      return ''
+    }
   },
   fetch({params, store}) {
-    // return store.dispatch('post/fetchPostById', params.id)
+    return store.dispatch('post/fetchPostById', params.id)
   }
 }
 </script>
